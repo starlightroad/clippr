@@ -4,7 +4,7 @@ import { Heading1, Text } from "@/app/_components/ui/typography";
 import { Button } from "@/app/_components/ui/button";
 import Container from "@/app/_components/container";
 import Navbar from "@/app/_components/navbar";
-import { HOME_METADATA } from "@/app/_lib/constants";
+import { HOME_METADATA, ROUTES } from "@/app/_lib/constants";
 
 export default function Home() {
   return (
@@ -24,7 +24,7 @@ export default function Home() {
             </Text>
             <div className="mt-6 w-full">
               <Button type="button" className="w-full sm:w-auto" asChild>
-                <Link href="/login">Get started</Link>
+                <Link href={ROUTES.LOGIN}>Get started</Link>
               </Button>
             </div>
           </div>
