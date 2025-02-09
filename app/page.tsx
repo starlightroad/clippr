@@ -18,7 +18,7 @@ export default function Home() {
                 favorite links.
               </Heading1>
             </header>
-            <Text className="max-w-xl">
+            <Text className="max-w-xl text-xl font-medium text-muted-foreground">
               Easily save and access your most important websites, articles, and
               resources all in one place. Stay organized, stay connected.
             </Text>
