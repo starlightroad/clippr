@@ -2,10 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Button } from "@/app/_components/ui/button";
+import { GITHUB_REPO_LINK } from "@/app/_lib/constants";
 
 export default function GitHubRepoButton() {
-  const GITHUB_REPO_LINK = "https://github.com/starlightroad/clippr";
-
   return (
     <Button type="button" size="icon" variant="outline" asChild>
       <Link href={GITHUB_REPO_LINK} target="_blank">

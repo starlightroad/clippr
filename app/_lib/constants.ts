@@ -22,3 +22,5 @@ export const ROUTES = {
   LOGIN: "/login",
   REGISTER: "/register",
 };
+
+export const GITHUB_REPO_LINK = "https://github.com/starlightroad/clippr";
