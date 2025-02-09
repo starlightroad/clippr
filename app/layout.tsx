@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import interFont from "@/app/_lib/font";
-import "./globals.css";
+import "./_styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
