@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 
 import interFont from "@/app/_lib/font";
 import "./_styles/globals.css";
-import { HOME_METADATA } from "@/app/_lib/constants";
+import { HOME_PAGE_METADATA } from "@/app/_lib/constants";
 
 export const metadata: Metadata = {
   title: {
-    template: `%s - ${HOME_METADATA.TITLE}`,
-    default: HOME_METADATA.TITLE,
-    absolute: `${HOME_METADATA.TITLE} - ${HOME_METADATA.DESCRIPTION}`,
+    template: `%s - ${HOME_PAGE_METADATA.TITLE}`,
+    default: HOME_PAGE_METADATA.TITLE,
+    absolute: `${HOME_PAGE_METADATA.TITLE} - ${HOME_PAGE_METADATA.DESCRIPTION}`,
   },
-  description: HOME_METADATA.DESCRIPTION,
+  description: HOME_PAGE_METADATA.DESCRIPTION,
   keywords: [
     "bookmark manager",
     "save links",

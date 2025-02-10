@@ -1,4 +1,4 @@
-export const HOME_METADATA = {
+export const HOME_PAGE_METADATA = {
   TITLE: "Clippr",
   DESCRIPTION: "Your personal space to save and organize your favorite links.",
   KEYWORDS: [

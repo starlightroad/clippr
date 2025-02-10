@@ -4,7 +4,7 @@ import { Heading1, Text } from "@/app/_components/ui/typography";
 import { Button } from "@/app/_components/ui/button";
 import Container from "@/app/_components/container";
 import Navbar from "@/app/_components/navbar";
-import { HOME_METADATA, ROUTES } from "@/app/_lib/constants";
+import { HOME_PAGE_METADATA, ROUTES } from "@/app/_lib/constants";
 
 export default function Home() {
   return (
@@ -15,7 +15,8 @@ export default function Home() {
           <div className="flex flex-col items-center text-center">
             <header>
               <Heading1>
-                {HOME_METADATA.TITLE} &ndash; {HOME_METADATA.DESCRIPTION}
+                {HOME_PAGE_METADATA.TITLE} &ndash;&nbsp;
+                {HOME_PAGE_METADATA.DESCRIPTION}
               </Heading1>
             </header>
             <Text className="max-w-xl text-xl font-medium text-muted-foreground">
