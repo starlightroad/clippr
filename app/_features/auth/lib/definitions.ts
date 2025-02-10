@@ -21,3 +21,8 @@ export const RegistrationFormSchema = z
     message: ERRORS.VALIDATION.PASSWORDS_DO_NOT_MATCH,
     path: ["confirmPassword"],
   });
+
+export const LoginFormSchema = z.object({
+  email: z.string().email(ERRORS.VALIDATION.INVALID_EMAIL),
+  password: z.string(),
+});
