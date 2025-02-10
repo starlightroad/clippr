@@ -1,6 +1,7 @@
 "use server";
 
 import { RegistrationFormSchema } from "@/app/_features/auth";
+import { ERRORS } from "@/app/_lib/constants";
 
 export const createUser = async (prevState: any, formData: FormData) => {
   // Validate user data
@@ -30,6 +31,6 @@ export const createUser = async (prevState: any, formData: FormData) => {
 
   // Temporary return statement
   return {
-    message: "The server is unable to process your request.",
+    message: ERRORS.SERVER.UNABLE_TO_PROCESS,
   };
 };
