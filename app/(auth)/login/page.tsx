@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import {
   Card,
   CardContent,
@@ -5,7 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/app/_components/ui/card";
-import { LoginForm } from "@/app/_features/auth";
+import { LOGIN_PAGE_METADATA, LoginForm } from "@/app/_features/auth";
+
+export const metadata: Metadata = {
+  title: LOGIN_PAGE_METADATA.TITLE,
+  description: LOGIN_PAGE_METADATA.DESCRIPTION,
+  keywords: LOGIN_PAGE_METADATA.KEYWORDS,
+};
 
 export default function Login() {
   return (

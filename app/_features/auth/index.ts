@@ -2,6 +2,7 @@ export {
   MAX_PASSWORD,
   MIN_PASSWORD,
   PASSWORD_REGEX,
+  LOGIN_PAGE_METADATA,
 } from "@/app/_features/auth/lib/constants";
 
 export {
