@@ -14,7 +14,7 @@ export default function Register() {
         <CardHeader>
           <CardTitle className="text-2xl">Register</CardTitle>
           <CardDescription>
-            Enter your email below to sign in to your account.
+            Sign up for Clippr and take control of your bookmarks.
           </CardDescription>
         </CardHeader>
         <CardContent>
