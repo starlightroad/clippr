@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 
 import { Button } from "@/app/_components/ui/button";
 import { Input } from "@/app/_components/ui/input";
@@ -14,7 +14,7 @@ const initialState = {
 };
 
 export default function RegistrationForm() {
-  const [state, formAction, pending] = useFormState(createUser, initialState);
+  const [state, formAction] = useFormState(createUser, initialState);
 
   return (
     <form action={formAction}>
@@ -46,9 +46,7 @@ export default function RegistrationForm() {
         <p aria-live="polite" className="sr-only">
           {state?.message}
         </p>
-        <Button type="submit" className="w-full" disabled={pending}>
-          Register
-        </Button>
+        <SubmitButton />
       </div>
       <div className="mt-4 text-center text-sm">
         Have an account?&nbsp;
@@ -60,5 +58,15 @@ export default function RegistrationForm() {
         </a>
       </div>
     </form>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button type="submit" className="w-full" disabled={pending}>
+      Register
+    </Button>
   );
 }
