@@ -5,21 +5,19 @@ import {
   MIN_PASSWORD,
   PASSWORD_REGEX,
 } from "@/app/_features/auth";
+import { ERRORS } from "@/app/_lib/constants";
 
 export const RegistrationFormSchema = z
   .object({
-    email: z.string().email("Please enter a valid email."),
+    email: z.string().email(ERRORS.VALIDATION.INVALID_EMAIL),
     password: z
       .string()
-      .min(MIN_PASSWORD, "Password must be at least 8 characters long.")
-      .max(MAX_PASSWORD, "Password must be no more than 32 characters.")
-      .regex(
-        PASSWORD_REGEX,
-        "Password must contain at least one letter, one number, and one special character.",
-      ),
+      .min(MIN_PASSWORD, ERRORS.VALIDATION.PASSWORD_TOO_SHORT)
+      .max(MAX_PASSWORD, ERRORS.VALIDATION.PASSWORD_TOO_LONG)
+      .regex(PASSWORD_REGEX, ERRORS.VALIDATION.PASSWORD_WEAK),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match.",
+    message: ERRORS.VALIDATION.PASSWORDS_DO_NOT_MATCH,
     path: ["confirmPassword"],
   });
