@@ -16,3 +16,9 @@ export const HOME_METADATA = {
     "bookmark sync",
   ],
 };
+
+export const ROUTES = {
+  HOME: "/",
+  LOGIN: "/login",
+  REGISTER: "/register",
+};

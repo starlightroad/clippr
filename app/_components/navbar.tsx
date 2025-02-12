@@ -4,6 +4,7 @@ import Container from "@/app/_components/container";
 import { Button } from "@/app/_components/ui/button";
 import BrandLogo from "@/app/_components/brand-logo";
 import GitHubRepoButton from "@/app/_components/repo-button";
+import { ROUTES } from "@/app/_lib/constants";
 
 export default function Navbar() {
   return (
@@ -15,7 +16,7 @@ export default function Navbar() {
             <ul className="flex items-center gap-2">
               <li>
                 <Button type="button" asChild>
-                  <Link href="/login">Log in</Link>
+                  <Link href={ROUTES.LOGIN}>Log in</Link>
                 </Button>
               </li>
               <li>
