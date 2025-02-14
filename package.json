@@ -7,10 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "docker:up": "docker compose -f docker/docker-compose.yaml up -d",
-    "docker:down": "docker compose -f docker/docker-compose.yaml down",
+    "docker:up": "docker compose --env-file .env.local -f docker/docker-compose.yaml up -d",
+    "docker:down": "docker compose --env-file .env.local -f docker/docker-compose.yaml down",
     "docker:restart": "npm run docker:down && npm run docker:up",
-    "docker:logs": "docker compose -f docker/docker-compose.yaml logs -f"
+    "docker:logs": "docker compose --env-file .env.local -f docker/docker-compose.yaml logs -f"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.2",
