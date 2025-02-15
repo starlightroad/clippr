@@ -5,7 +5,6 @@ import * as schema from "@/app/_db/schema";
 import env from "@/app/_lib/env";
 
 export const client = postgres(env.DATABASE_URL, {
-  ssl: "require",
   max: env.DATABASE_MIGRATING || env.DATABASE_SEEDING ? 1 : undefined,
 });
 
