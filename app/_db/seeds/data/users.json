@@ -1,8 +1,10 @@
 [
   {
-    "name": "Sora"
+    "name": "Sora",
+    "email": "sora@kingdomhearts.com"
   },
   {
-    "name": "Roxas"
+    "name": "Roxas",
+    "email": "roxas@kingdomhearts.com"
   }
 ]
