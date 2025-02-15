@@ -8,6 +8,13 @@
       "when": 1739587388221,
       "tag": "0000_red_frightful_four",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1739637203617,
+      "tag": "0001_plain_the_captain",
+      "breakpoints": true
     }
   ]
 }
