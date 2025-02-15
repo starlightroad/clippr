@@ -12,7 +12,7 @@
     "docker:restart": "npm run docker:down && npm run docker:up",
     "docker:logs": "docker compose --env-file .env.local -f docker/docker-compose.yaml logs -f",
     "db:generate": "dotenv -e .env.local -- npx drizzle-kit generate",
-    "db:migrate": "dotenv -v DATABASE_MIGRATING=true -- npx drizzle-kit migrate",
+    "db:migrate": "dotenv -e .env.local -v DATABASE_MIGRATING=true -- tsx app/_db/migrate.ts",
     "db:seed": "dotenv -v DATABASE_SEEDING=true -- app/_db/seed.ts",
     "db:studio": "dotenv -e .env.local -- npx drizzle-kit studio"
   },
