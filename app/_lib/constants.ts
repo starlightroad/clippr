@@ -21,6 +21,7 @@ export const ROUTES = {
   HOME: "/",
   LOGIN: "/login",
   REGISTER: "/register",
+  DASHBOARD: "/d",
 };
 
 export const GITHUB_REPO_LINK = "https://github.com/starlightroad/clippr";
@@ -33,6 +34,8 @@ export const ERRORS = {
   AUTH: {
     INVALID_CREDENTIALS: "Invalid email or password.",
     UNAUTHORIZED: "You are not authorized to perform this action.",
+    USER_EXISTS: "User already exists.",
+    FAILED_TO_CREATE_USER: "Failed to create user.",
   },
   VALIDATION: {
     REQUIRED_FIELD: "This field is required.",

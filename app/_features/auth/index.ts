@@ -10,5 +10,7 @@ export {
   LoginFormSchema,
 } from "@/app/_features/auth/lib/definitions";
 
+export { auth } from "@/app/_features/auth/lib/auth";
+
 export { default as RegistrationForm } from "@/app/_features/auth/components/registration-form";
 export { default as LoginForm } from "@/app/_features/auth/components/login-form";
