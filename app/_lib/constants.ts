@@ -36,6 +36,7 @@ export const ERRORS = {
     UNAUTHORIZED: "You are not authorized to perform this action.",
     USER_EXISTS: "User already exists.",
     FAILED_TO_CREATE_USER: "Failed to create user.",
+    FAILED_TO_LOG_IN_USER: "Failed to log in user.",
   },
   VALIDATION: {
     REQUIRED_FIELD: "This field is required.",
@@ -45,6 +46,7 @@ export const ERRORS = {
     PASSWORDS_DO_NOT_MATCH: "Passwords do not match.",
     PASSWORD_WEAK:
       "Password must include at least one letter, one number, and one special character.",
+    PASSWORD_REQUIRED: "Please enter your password.",
   },
   CLIPPR: {
     BOOKMARK_NOT_FOUND: "Bookmark not found.",

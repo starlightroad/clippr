@@ -1,5 +1,10 @@
-import { LoginFormSchema } from "@/app/_features/auth";
-import { ERRORS } from "@/app/_lib/constants";
+"use server";
+
+import { redirect } from "next/navigation";
+import { APIError } from "better-auth/api";
+
+import { auth, LoginFormSchema } from "@/app/_features/auth";
+import { ERRORS, ROUTES } from "@/app/_lib/constants";
 
 export const signInUser = async (prevState: any, formData: FormData) => {
   // Validate user data
@@ -11,15 +16,40 @@ export const signInUser = async (prevState: any, formData: FormData) => {
   if (!validatedUserData.success) {
     const errors = validatedUserData.error.flatten().fieldErrors;
 
-    if (errors.email) {
-      return {
-        message: errors.email[0],
-      };
-    }
+    return {
+      message: String(errors.email ? errors.email : errors.password),
+    };
   }
 
-  // Temporary return statement
-  return {
-    message: ERRORS.SERVER.UNABLE_TO_PROCESS,
-  };
+  try {
+    const { data } = validatedUserData;
+
+    await auth.api.signInEmail({
+      body: {
+        email: data.email,
+        password: data.password,
+      },
+      asResponse: false,
+    });
+  } catch (error) {
+    if (error instanceof APIError) {
+      console.error(error.body.code);
+
+      if (error.body.code === "INVALID_EMAIL_OR_PASSWORD") {
+        return {
+          message: ERRORS.AUTH.INVALID_CREDENTIALS,
+        };
+      }
+
+      return {
+        message: ERRORS.AUTH.FAILED_TO_LOG_IN_USER,
+      };
+    }
+
+    return {
+      message: ERRORS.SERVER.UNABLE_TO_PROCESS,
+    };
+  }
+
+  redirect(ROUTES.HOME);
 };

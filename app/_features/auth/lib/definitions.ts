@@ -24,5 +24,5 @@ export const RegistrationFormSchema = z
 
 export const LoginFormSchema = z.object({
   email: z.string().email(ERRORS.VALIDATION.INVALID_EMAIL),
-  password: z.string(),
+  password: z.string().min(1, ERRORS.VALIDATION.PASSWORD_REQUIRED),
 });
