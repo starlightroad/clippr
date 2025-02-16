@@ -1,7 +1,10 @@
 "use server";
 
-import { RegistrationFormSchema } from "@/app/_features/auth";
-import { ERRORS } from "@/app/_lib/constants";
+import { redirect } from "next/navigation";
+import { APIError } from "better-auth/api";
+
+import { auth, RegistrationFormSchema } from "@/app/_features/auth";
+import { ERRORS, ROUTES } from "@/app/_lib/constants";
 
 export const createUser = async (prevState: any, formData: FormData) => {
   // Validate user data
@@ -29,8 +32,35 @@ export const createUser = async (prevState: any, formData: FormData) => {
     }
   }
 
-  // Temporary return statement
-  return {
-    message: ERRORS.SERVER.UNABLE_TO_PROCESS,
-  };
+  try {
+    const { data } = validatedUserData;
+
+    await auth.api.signUpEmail({
+      body: {
+        name: data.email,
+        email: data.email,
+        password: data.password,
+      },
+    });
+  } catch (error) {
+    if (error instanceof APIError) {
+      console.error(error.body.code);
+
+      if (error.body.code === "USER_ALREADY_EXISTS") {
+        return {
+          message: ERRORS.AUTH.USER_EXISTS,
+        };
+      }
+
+      return {
+        message: ERRORS.AUTH.FAILED_TO_CREATE_USER,
+      };
+    }
+
+    return {
+      message: ERRORS.SERVER.UNABLE_TO_PROCESS,
+    };
+  }
+
+  redirect(ROUTES.HOME);
 };
