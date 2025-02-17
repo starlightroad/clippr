@@ -1,11 +1,6 @@
+import { Suspense } from "react";
 import Link from "next/link";
-import {
-  FolderOpenIcon,
-  LibraryIcon,
-  LibrarySquareIcon,
-  PlusIcon,
-  SettingsIcon,
-} from "lucide-react";
+import { PlusIcon, SettingsIcon } from "lucide-react";
 
 import {
   Sidebar,
@@ -17,39 +12,28 @@ import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuBadge,
-  SidebarMenuButton,
   SidebarMenuItem,
 } from "@/app/_components/ui/sidebar";
-import BrandLogo from "@/app/_components/brand-logo";
 
-const menuItems = [
+import type { NavItem } from "@/app/_lib/definitions";
+import BrandLogo from "@/app/_components/brand-logo";
+import NavItemLink from "@/app/_components/nav-item-link";
+
+import {
+  NavCollections,
+  NavCollectionsSkeleton,
+} from "@/app/_features/collections";
+
+const navItems: NavItem[] = [
   {
     title: "All bookmarks",
-    url: "/d/bookmarks",
-    icon: LibraryIcon,
+    href: "/d/bookmarks",
+    icon: "LibraryIcon",
   },
   {
     title: "Uncategorized",
-    url: "/d/bookmarks/uncategorized",
-    icon: FolderOpenIcon,
-  },
-];
-
-const collectionItems = [
-  {
-    title: "Health",
-    url: "/d/collections/health",
-    icon: LibrarySquareIcon,
-  },
-  {
-    title: "Entertainment",
-    url: "/d/collections/entertainment",
-    icon: LibrarySquareIcon,
-  },
-  {
-    title: "Tech",
-    url: "/d/collections/tech",
-    icon: LibrarySquareIcon,
+    href: "/d/bookmarks/uncategorized",
+    icon: "FolderOpenIcon",
   },
 ];
 
@@ -73,18 +57,16 @@ export default function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {menuItems.map((item) => {
+              {navItems.map((item) => {
                 const key = `sidebar-menu-item-${item.title}`;
-                const SidebarMenuIcon = item.icon;
 
                 return (
                   <SidebarMenuItem key={key}>
-                    <SidebarMenuButton asChild>
-                      <Link href={item.url}>
-                        <SidebarMenuIcon />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
+                    <NavItemLink
+                      title={item.title}
+                      href={item.href}
+                      icon={item.icon}
+                    />
                     <SidebarMenuBadge>2</SidebarMenuBadge>
                   </SidebarMenuItem>
                 );
@@ -100,24 +82,9 @@ export default function AppSidebar() {
             <span className="sr-only">Add Collection</span>
           </SidebarGroupAction>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {collectionItems.map((item) => {
-                const key = `sidebar-menu-collection-item-${item.title}`;
-                const SidebarMenuCollectionIcon = item.icon;
-
-                return (
-                  <SidebarMenuItem key={key}>
-                    <SidebarMenuButton asChild>
-                      <Link href={item.url}>
-                        <SidebarMenuCollectionIcon />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                    <SidebarMenuBadge>3</SidebarMenuBadge>
-                  </SidebarMenuItem>
-                );
-              })}
-            </SidebarMenu>
+            <Suspense fallback={<NavCollectionsSkeleton />}>
+              <NavCollections />
+            </Suspense>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>

@@ -20,3 +20,9 @@ export const EnvSchema = z.object({
 });
 
 export type EnvSchema = z.infer<typeof EnvSchema>;
+
+export type NavItem = {
+  title: string;
+  href: string;
+  icon: "LibraryIcon" | "FolderOpenIcon" | "LibrarySquareIcon";
+};
