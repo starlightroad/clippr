@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Fragment } from "react";
 import { usePathname } from "next/navigation";
 import { BookmarkPlusIcon } from "lucide-react";
 
@@ -39,14 +40,14 @@ export default function Navbar() {
               }
 
               return (
-                <>
-                  <BreadcrumbItem key={id} className="capitalize">
+                <Fragment key={id}>
+                  <BreadcrumbItem className="capitalize">
                     <BreadcrumbLink asChild>
                       <Link href={`/d/${item}`}>{item}</Link>
                     </BreadcrumbLink>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator />
-                </>
+                </Fragment>
               );
             })}
           </BreadcrumbList>
