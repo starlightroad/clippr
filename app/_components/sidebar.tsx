@@ -1,6 +1,6 @@
-import { Suspense } from "react";
 import Link from "next/link";
-import { PlusIcon, SettingsIcon } from "lucide-react";
+import { Suspense } from "react";
+import { PlusIcon, SettingsIcon, UserCircle2Icon } from "lucide-react";
 
 import {
   Sidebar,
@@ -43,14 +43,21 @@ export default function AppSidebar() {
       <SidebarHeader>
         <div className="flex items-center justify-between pl-2">
           <BrandLogo />
-          <div className="flex">
-            <Link
-              href="/d/settings"
-              className="hover:bg-sidebar-accent rounded-md p-1"
-            >
-              <SettingsIcon size={16} />
-            </Link>
-          </div>
+          <ul className="flex items-center gap-1">
+            <li>
+              <span className="block cursor-pointer rounded-md p-1 hover:bg-sidebar-accent">
+                <UserCircle2Icon size={16} />
+              </span>
+            </li>
+            <li>
+              <Link
+                href="/d/settings"
+                className="block rounded-md p-1 hover:bg-sidebar-accent"
+              >
+                <SettingsIcon size={16} />
+              </Link>
+            </li>
+          </ul>
         </div>
       </SidebarHeader>
       <SidebarContent>
