@@ -14,3 +14,4 @@ export { auth } from "@/app/_features/auth/lib/auth";
 
 export { default as RegistrationForm } from "@/app/_features/auth/components/registration-form";
 export { default as LoginForm } from "@/app/_features/auth/components/login-form";
+export { default as LogoutForm } from "@/app/_features/auth/components/logout-form";
