@@ -1,3 +1,6 @@
+"use client";
+
+import { useTheme } from "next-themes";
 import { PaletteIcon } from "lucide-react";
 
 import {
@@ -8,7 +11,7 @@ import {
 } from "@/app/_components/ui/dropdown-menu";
 
 export default function ThemeMenu() {
-  const themeValues = ["auto", "light", "dark"];
+  const { themes, theme, setTheme } = useTheme();
 
   return (
     <DropdownMenuSub>
@@ -17,14 +20,15 @@ export default function ThemeMenu() {
         <span>Theme</span>
       </DropdownMenuSubTrigger>
       <DropdownMenuSubContent>
-        {themeValues.map((themeValue, idx) => {
+        {themes.map((themeValue) => {
           const key = `theme-value${themeValue}}`;
-          const checkedValue = idx === 0;
+          const checkedValue = theme === themeValue;
 
           return (
             <DropdownMenuCheckboxItem
               key={key}
               checked={checkedValue}
+              onClick={() => setTheme(themeValue)}
               className="capitalize"
             >
               {themeValue}
