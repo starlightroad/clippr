@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { PlusIcon, SettingsIcon, UserCircle2Icon } from "lucide-react";
+import { PlusIcon, SettingsIcon } from "lucide-react";
 
 import {
   Sidebar,
@@ -14,15 +14,16 @@ import {
   SidebarMenuBadge,
   SidebarMenuItem,
 } from "@/app/_components/ui/sidebar";
-
-import type { NavItem } from "@/app/_lib/definitions";
 import BrandLogo from "@/app/_components/brand-logo";
 import NavItemLink from "@/app/_components/nav-item-link";
+
+import type { NavItem } from "@/app/_lib/definitions";
 
 import {
   NavCollections,
   NavCollectionsSkeleton,
 } from "@/app/_features/collections";
+import { UserMenu } from "@/app/_features/dashboard";
 
 const navItems: NavItem[] = [
   {
@@ -45,9 +46,7 @@ export default function AppSidebar() {
           <BrandLogo />
           <ul className="flex items-center gap-1">
             <li>
-              <span className="block cursor-pointer rounded-md p-1 hover:bg-sidebar-accent">
-                <UserCircle2Icon size={16} />
-              </span>
+              <UserMenu />
             </li>
             <li>
               <Link
