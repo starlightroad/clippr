@@ -4,6 +4,8 @@ import interFont from "@/app/_lib/font";
 import "./_styles/globals.css";
 import { HOME_PAGE_METADATA } from "@/app/_lib/constants";
 
+import { ThemeProvider } from "@/app/_features/theme";
+
 export const metadata: Metadata = {
   title: {
     template: `%s - ${HOME_PAGE_METADATA.TITLE}`,
@@ -33,8 +35,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${interFont.className} antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${interFont.className} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
