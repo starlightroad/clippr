@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LogOutIcon, SettingsIcon, UserCircle2Icon } from "lucide-react";
 
 import { getUser } from "@/app/_data/user";
@@ -40,9 +41,11 @@ export default async function UserMenu() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <ThemeMenu />
-          <DropdownMenuItem>
-            <SettingsIcon />
-            <span>Settings</span>
+          <DropdownMenuItem asChild>
+            <Link href="/d/settings">
+              <SettingsIcon />
+              <span>Settings</span>
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
