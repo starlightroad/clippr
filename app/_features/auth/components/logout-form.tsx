@@ -5,7 +5,7 @@ import { useFormState, useFormStatus } from "react-dom";
 import { type FormHTMLAttributes, forwardRef } from "react";
 
 import { cn } from "@/app/_lib/utils";
-import { signOutUser } from "@/app/d/(dashboard)/actions";
+import { signOutUser } from "@/app/(dashboard)/d/actions";
 
 export default forwardRef<HTMLFormElement, FormHTMLAttributes<HTMLFormElement>>(
   ({ className, ...props }, ref) => {
