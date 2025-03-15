@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { LogOutIcon, SettingsIcon, UserCircle2Icon } from "lucide-react";
+import { SettingsIcon, UserCircle2Icon } from "lucide-react";
 
 import { getUser } from "@/app/_data/user";
 
 import { ThemeMenu } from "@/app/_features/dashboard";
+import { LogoutForm } from "@/app/_features/auth";
 
 import {
   DropdownMenu,
@@ -49,9 +50,8 @@ export default async function UserMenu() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <LogOutIcon />
-          <span>Sign Out</span>
+        <DropdownMenuItem asChild>
+          <LogoutForm />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
