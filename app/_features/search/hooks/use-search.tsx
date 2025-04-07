@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import { SearchContext } from "@/app/_features/search";
+import { SEARCH_DELAY_IN_MS, SearchContext } from "@/app/_features/search";
 
 export default function useSearch() {
   const pathname = usePathname();
@@ -26,7 +26,7 @@ export default function useSearch() {
     const newUrl = `${pathname}?${params.toString()}`;
 
     replace(newUrl);
-  }, 400);
+  }, SEARCH_DELAY_IN_MS);
 
   const updateQuery = (value: string) => {
     setQuery(value);

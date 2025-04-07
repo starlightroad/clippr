@@ -15,7 +15,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { useSearch } from "@/app/_features/search";
+import { SEARCH_DELAY_IN_MS, useSearch } from "@/app/_features/search";
 
 import {
   Table,
@@ -59,7 +59,7 @@ export function DataTable<TData, TValue>({
   useMemo(
     useDebouncedCallback(
       () => table.getColumn("name")?.setFilterValue(query),
-      400,
+      SEARCH_DELAY_IN_MS,
     ),
     [query],
   );
