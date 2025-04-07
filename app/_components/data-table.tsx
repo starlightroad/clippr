@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
 
 import {
   type ColumnDef,
@@ -55,9 +56,13 @@ export function DataTable<TData, TValue>({
     },
   });
 
-  useMemo(() => {
-    table.getColumn("name")?.setFilterValue(query);
-  }, [query]);
+  useMemo(
+    useDebouncedCallback(
+      () => table.getColumn("name")?.setFilterValue(query),
+      400,
+    ),
+    [query],
+  );
 
   return (
     <>
