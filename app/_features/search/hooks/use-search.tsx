@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+"use client";
+
+import { useContext, useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
+import { SearchContext } from "@/app/_features/search";
 
 export default function useSearch() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
 
-  const q = searchParams.get("q")?.toString();
-  const [query, setQuery] = useState(q ?? "");
+  const { query, setQuery } = useContext(SearchContext);
+  const q = searchParams.get("q");
 
   const handleSearch = useDebouncedCallback((value: string) => {
     const params = new URLSearchParams(searchParams);
