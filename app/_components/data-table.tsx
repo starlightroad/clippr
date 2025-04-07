@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import {
   type ColumnDef,
@@ -13,6 +13,8 @@ import {
   type SortingState,
   useReactTable,
 } from "@tanstack/react-table";
+
+import { useSearch } from "@/app/_features/search";
 
 import {
   Table,
@@ -36,6 +38,7 @@ export function DataTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const { query } = useSearch();
 
   const table = useReactTable({
     data,
@@ -51,6 +54,10 @@ export function DataTable<TData, TValue>({
       columnFilters,
     },
   });
+
+  useMemo(() => {
+    table.getColumn("name")?.setFilterValue(query);
+  }, [query]);
 
   return (
     <>
